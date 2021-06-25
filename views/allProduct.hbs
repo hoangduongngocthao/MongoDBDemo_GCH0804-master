@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>All products</title>
+    <style>
+        .POST{
+             font-size: 20px;
+            display: block;
+            text-align: center;
+        }
+        .gohome a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="search">{{username}}</h2>
+   <form method="POST" action="/search">
+        <input type="text" name="txtName">
+        <input type="submit" value="Search">
+   </form>
+   <div class="table-hover">
+   <table class="table table-hover" border="1">
+       <thead>
+           <tr>
+               <th style="color: rgb(15, 2, 9);">Name</th>
+               <th style="color: rgb(15, 2, 9);">Price</th>
+               <th style="color: rgb(15, 2, 9);">Edit</th>
+               <th style="color: rgb(15, 2, 9);">Delete</th>
+           </tr>
+       </thead>
+       <tbody>
+           {{#each model}}
+           <tr>
+                <td>{{name}}</td>
+                <td>{{price}}</td>
+                 <td><a href="/edit?id={{_id}}">Edit</a></td>
+                <td><a href="/delete?id={{_id}}" onclick="return confirm('Are you sure')">Delete</a></td>
+            </tr>
+            {{/each}}
+       </tbody>      
+   </table>
+    </div>
+    <div class="gohome">
+        <a href="/"><img src="pics/GoHome.png" alt="Go Home" style="margin: 0; width: 100px"></a>
+    </div>
+</body>
+</html>

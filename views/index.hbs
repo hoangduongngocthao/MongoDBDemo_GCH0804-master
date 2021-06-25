@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/mystyle.css">
+    <title>Index Page</title>
+    
+    <style>
+        body{
+            margin: 0;
+            background-image: url(pics/Katana2.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .header ul{
+            display: flex;
+            background-color: pink;
+            margin: 0;
+            padding: 20px 200px;
+            list-style: none;
+            justify-content: space-between;
+        }
+        .header a{
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bolder;
+        }
+        .header a:hover{
+            color: blueviolet;
+        }
+
+        .welcome{
+            color: white;
+            font-size: 30px;
+            display: block;
+            text-align: center;
+        }
+
+        .form{
+          margin: 0 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <ul>
+                <li><a href="/insert">New Product</a></li>
+                <li><a href="/view">All products</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </div>
+
+        <div class="container_body">
+            <h2 class="welcome">Welcome {{loginName}}</h2>
+            <br><br>
+            <div class="form">
+                <form action="/login" method="post">
+                    <h2 style="margin: 0; color: rgb(255, 0, 140);">User Name </h2>
+                    <br>
+                    <input type="text" name="txtName" style="width: 100%; padding: 15px 10px; border-radius: 3px; border: 0;" placeholder="Enter username...">
+                    <br><br>
+                    <h2 style="margin: 0; color: rgb(255, 0, 140);">Password</h2> 
+                    <br>
+                    <input type="password" name="txtPassword" style="width: 100%; padding: 15px 10px; border-radius: 3px; border: 0;" placeholder="Enter Password...">
+                    <br><br>
+                    <h2 style="color: red;">{{errorMsg}}</h2>
+                    <input type="submit" value="Login" style="width: 100%; padding: 10px 10px; border-radius: 3px; border: 0; background-color: green; color: white;"> 
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    <div> 
+        
+    </div>
+</footer>
+</html>

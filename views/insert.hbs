@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Product</title>
+</head>
+    <style>
+        body{
+            margin: 0;
+            background-image: url(pics/Katana.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .form{
+          margin: 0 100px;
+        }
+    </style>
+<body>
+    <div class="form">
+    <br><br>
+    <form action="/doInsert" method="post">
+        <h2 style="margin: 0; color: rgb(255, 0, 140)">Name</h2>
+        <br>
+        <input type="text" name="txtName" style="width: 100%; padding: 15px 10px; border-radius: 3px; border: 0;" placeholder="Enter name...">
+        <br><br>
+        <h2 style="margin: 0; color: rgb(255, 0, 140);">Price</h2>
+        <br>
+        <input type="text" name="txtPrice" style="width: 100%; padding: 15px 10px; border-radius: 3px; border: 0;" placeholder="Enter name...">
+        <br><br>
+        <h2 style="color: red;">{{errorMsg}}</h2>
+        <input type="submit" value="Insert" style="width: 100%; padding: 10px 10px; border-radius: 3px; border: 0; background-color: green; color: white;">
+    </form>
+    </div>
+</body>
+</html>
