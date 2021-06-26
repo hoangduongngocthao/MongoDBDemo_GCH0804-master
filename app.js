@@ -86,7 +86,8 @@ app.get('/view',async (req,res)=>{
 app.post('/doInsert', async (req,res)=>{
     var nameInput = req.body.txtName;
     var priceInput = req.body.txtPrice;
-    var newProduct = {name:nameInput, price:priceInput, size : {dai:20, rong:40}}
+    var imageInput = req.body.imgImage;
+    var newProduct = {name:nameInput, price:priceInput, image:imageInput, size : {dai:20, rong:40}}
     await dbHandler.insertOneIntoCollection(newProduct,"SanPham");
     res.render('index')
 })
