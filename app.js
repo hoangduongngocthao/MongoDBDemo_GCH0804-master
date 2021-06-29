@@ -23,7 +23,8 @@ app.use(express.static('public'))
 
 var dsNotToDelete = [];//'ao','quan','bep','my goi'];
 
-const dbHandler = require('./databaseHandler')
+const dbHandler = require('./databaseHandler');
+const e = require('express');
 
 
 //search chinh xac=> tim gan dung
@@ -83,12 +84,13 @@ app.get('/view',async (req,res)=>{
     res.render('allProduct',{model:results,username:userName})
 })
 
-app.post('/doInsert', async (req,res)=>{
-    var nameInput = req.body.txtName;
-    var priceInput = req.body.txtPrice;
-    var newProduct = {name:nameInput, price:priceInput, size : {dai:20, rong:40}}
-    await dbHandler.insertOneIntoCollection(newProduct,"SanPham");
-    res.render('index')
+
+app.post('/doRegister',async (req,res)=>{
+    const nameInput = req.body.txtName;
+    const passInput = req.body.txtPassword;
+    const newUser = {username:nameInput,password:passInput};
+    await dbHandler.insertOneIntoCollection(newUser,"users");
+    res.redirect('/');
 })
 app.get('/register',(req,res)=>{
     res.render('register')
@@ -104,12 +106,12 @@ app.post('/login',async (req,res)=>{
         res.render('index',{errorMsg:"Login failed!"})
     }
 })
-app.post('/doRegister',async (req,res)=>{
+app.post('/doInsert', async (req,res)=>{
     const nameInput = req.body.txtName;
-    const passInput = req.body.txtPassword;
-    const newUser = {username:nameInput,password:passInput};
-    await dbHandler.insertOneIntoCollection(newUser,"users");
-    res.redirect('/');
+    const priceInput = req.body.txtPrice;
+    var newProduct = {name:nameInput, price:priceInput, size : {dai:20, rong:40}}
+    await dbHandler.insertOneIntoCollection(newProduct,"SanPham");
+    res.render('index')
 })
 app.get('/insert',(req,res)=>{
     res.render('insert')
