@@ -24,7 +24,6 @@ app.use(express.static('public'))
 var dsNotToDelete = [];//'ao','quan','bep','my goi'];
 
 const dbHandler = require('./databaseHandler');
-const e = require('express');
 
 
 //search chinh xac=> tim gan dung
@@ -86,12 +85,32 @@ app.get('/view',async (req,res)=>{
 
 
 app.post('/doRegister',async (req,res)=>{
+    let error = [];
+    let flag = true;
     const nameInput = req.body.txtName;
     const passInput = req.body.txtPassword;
     const newUser = {username:nameInput,password:passInput};
-    await dbHandler.insertOneIntoCollection(newUser,"users");
-    res.redirect('/');
+    if(nameInput.length < 6)
+    {
+        error["username"] = 'Username have to from 6 characters'
+        flag = false;
+    }
+    if(passInput.length < 6)
+    {
+        error["password"] = 'Password have to from 6 characters'
+        flag = false;
+    }
+    if (flag == false)
+    {
+        res.render('register', {error:error})
+    }
+    else
+    {  
+        await dbHandler.insertOneIntoCollection(newUser,"users"); 
+        res.redirect('/') 
+    }
 })
+
 app.get('/register',(req,res)=>{
     res.render('register')
 })
@@ -107,12 +126,31 @@ app.post('/login',async (req,res)=>{
     }
 })
 app.post('/doInsert', async (req,res)=>{
+    let error = [];
+    let flag = true;
     const nameInput = req.body.txtName;
     const priceInput = req.body.txtPrice;
     var newProduct = {name:nameInput, price:priceInput, size : {dai:20, rong:40}}
-    await dbHandler.insertOneIntoCollection(newProduct,"SanPham");
-    res.render('index')
+    if(!dbHandler.checkName(nameInput))
+    {
+        error["name"] = 'Please Enter Name Again!'
+        flag = false;
+    } if(dbHandler.checkPrice(priceInput))
+    {
+        error["price"] = 'Please Enter Price Again!'
+        flag = false;
+    }
+    if (flag == true)
+    {
+        await dbHandler.insertOneIntoCollection(newProduct,"SanPham");
+        res.render('insert') 
+    }
+    else
+    {  
+        res.render('insert', {error:error}) 
+    }
 })
+
 app.get('/insert',(req,res)=>{
     res.render('insert')
 })

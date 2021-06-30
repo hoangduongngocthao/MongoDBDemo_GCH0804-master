@@ -24,10 +24,12 @@
                     <br>
                     <input type="text" name="txtName" style="width: 100%; padding: 15px 10px; border-radius: 3px; border: 0;" placeholder="Enter username...">
                     <br><br>
+                    <span style="color: rgb(14, 13, 13); background: red;" class="error">{{error.username}}</span>
                     <h2 style="margin: 0; color: rgb(255, 0, 140);">Password</h2> 
                     <br>
                     <input type="password" name="txtPassword" style="width: 100%; padding: 15px 10px; border-radius: 3px; border: 0;" placeholder="Enter Password...">
                     <br><br>
+                    <span style="color: rgb(14, 13, 13); background: red;" class="error">{{error.password}}</span>
                     <h2 style="color: red;">{{errorMsg}}</h2>
                     <input type="submit" value="Register" style="width: 100%; padding: 10px 10px; border-radius: 3px; border: 0; background-color: green; color: white;"> 
                 </form>

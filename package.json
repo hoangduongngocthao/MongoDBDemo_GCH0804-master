@@ -16,5 +16,13 @@
     "mongodb": "^3.6.9"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangduongngocthao/MongoDBDemo_GCH0804-master.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hoangduongngocthao/MongoDBDemo_GCH0804-master/issues"
+  },
+  "homepage": "https://github.com/hoangduongngocthao/MongoDBDemo_GCH0804-master#readme",
   "description": ""
-} 
+}
